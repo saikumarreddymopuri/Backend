@@ -19,7 +19,7 @@ const userSchema = new Schema(
             lowecase: true,
             trim: true,
         },
-        fullname: {
+        fullName: {
             type: String,
             required: true,
             trim: true,
@@ -27,7 +27,7 @@ const userSchema = new Schema(
         },
         avatar: {
             type: String,// cloudnary url
-            required: true,             
+            required: true            
         },
         coverImage: {
             type: String, // cloudnary url
@@ -69,7 +69,7 @@ userSchema.methods.generateAcessToken = function(){
         _id: this._id,
         email: this.email,
         username: this.username,
-        fullname: this.fullname
+        fullName: this.fullName
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
