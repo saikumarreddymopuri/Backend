@@ -155,8 +155,8 @@ const logoutUser = asyncHandler(async(req, res) => {
    await User.findByIdAndUpdate(
       req.user._id,
       {
-         $set:{
-            refreshToken: undefined
+         $unset: {
+            refreshToken: 1 // this removes the feild from document it is used to remove the refresh token rather than using set - undefined combo it is better to use unset - flagged 1 to get better results
          }
       },
       {
@@ -283,7 +283,7 @@ const updateAccountDetails = asyncHandler(async(req, res) => {
       new ApiResponse(200, user, "Account Details Updated successfully"))
 })
 
-const upadteUserAvatar = asyncHandler(async(req, res) => {
+const updateUserAvatar = asyncHandler(async(req, res) => {
    const avatarLocalPath = req.file?.path
 
    if (!avatarLocalPath) {
@@ -483,7 +483,7 @@ export {
    changeCurrentPassword,
    getCurrentUser,
    updateAccountDetails,
-   upadteUserAvatar,
+   updateUserAvatar,
    updateUserCoverimage,
    getUserChannelProfile,
    getWatchHistory
