@@ -156,7 +156,7 @@ const logoutUser = asyncHandler(async(req, res) => {
       req.user._id,
       {
          $unset: {
-            refreshToken: 1 // this removes the feild from document it is used to remove the refresh token rather than using set - undefined combo it is better to use unset - flagged 1 to get better results
+            refreshToken: 1 // this removes the feild from document it is used to remove the refresh token rather than using set - undefined combo it is better to use unset - flagged 1 to get better results // for code to push into git special comment at last 
          }
       },
       {
